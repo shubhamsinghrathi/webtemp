@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Wiki API Search</title>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1"/>
+		<script type="text/javascript" src="jquery.js"></script>
+		<style>
+			body{
+				background-color:#fff;
+				font-family:arial;
+				font-size:14px;
+			}
+			#full{
+				width:100%;
+				margin-top:15%;
+			}
+			.clear{
+				clear:both;
+			}
+			#frm-upper{
+				width:260px;
+				margin:0 auto;
+			}
+			#frm-logo-img{
+				float:left;
+				height:90px;
+			}
+			#frm-logo-text{
+				border:none;
+				background:none;
+				float:left;
+				margin-left:20px;
+				font-size:50px;
+				height:90px;
+				font-weight:bold;
+			}
+			#frm{
+				max-width:600px;
+				margin:0 auto;
+				margin-top:40px;
+			}
+			#frm-top{
+				position:relative;
+				width:80%;
+				min-width:300px;
+				margin:0 auto;
+			}
+			input:focus{
+				outline:0;
+			}
+			#key-input{
+				width:96%;
+				height:35px;
+				padding-left:4%;
+				color:#444;
+				font-size:15px;
+				font-family:arial;
+				border:1px #ddd solid;
+				border-top:1px #eee solid;
+				box-shadow:0px 1px 1px #eee;
+				transition:all 0.1 linear 0.1;
+			}
+			#key-input:focus,#key-input:hover{
+				box-shadow:0px 1px 3px #ccc;
+			}
+			#sub{
+				position:absolute;
+				top:8px;
+				right:10px;
+			}
+			.container{
+				margin:10px 0;
+			}
+			.link-top{
+				margin-bottom:6px;
+			}
+			.link{
+				font-size:15px;
+				font-weight:bold;
+				color:#2058FF;
+			}
+			.content{
+				color:#444;
+			}
+			#the-div{
+				margin-top:20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="full">
+			<div id="frm-upper">
+				<img id="frm-logo-img" src="wiki.jpg"/>
+				<button id="frm-logo-text">Wiki</button>
+				<div class="clear"></div>
+			</div>
+			<form id="frm">
+				<div id='frm-top'>
+					<input type="text" name="keyword" id="key-input" placeholder='enter something' value=''/>
+					<img type="submit" id="sub" value="submit" src="mic.png"/>
+				</div>
+				<div id="the-div"> </div>
+			</form>
+		</div>
+		<script>
+			function _(e){
+				return document.getElementById(e);
+			}
+			
+			function abcd(){
+				if($('#key-input').val()!=''){
+					$.ajax({
+						url:'https://en.wikipedia.org/w/api.php?action=opensearch&search='+$('#key-input').val()+'&limit=10&namespace=0&format=json',
+						dataType:'jsonp',
+						success:function(data){
+							$('#the-div').html('');chs=0;
+							for(i=0;i<data[1].length;i++){
+								if(chs==0){
+									chs=1;
+									$('#full').css('margin-top','20px');
+								}
+								$('#the-div').append('<div class="container"><div class="link-top"><a class="link" href="'+data[3][i]+'" target="_blank">'+data[1][i]+'</a></div><div class="content">'+data[2][i]+'</div></div>')
+							}
+							if($('#the-div').html()==''){
+								$('#full').css('margin-top','15%');
+							}
+						}
+					})
+				}
+				else{
+					$('#full').css('margin-top','15%');
+				}
+				$('#key-input').val('');
+				$('#the-div').html('');
+			}
+			
+			_('sub').onclick=function(){
+				abcd();
+			}
+			
+			$('#frm').submit(function(e){e.preventDefault();abcd();})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>First After HTML</title>
+		<meta charset='utf-8'/>
+		<meta name="viewport" content="width=device-width,initial-scale=1"/>
+		<style>
+			body{
+				background-color:#fff;
+				margin:0;
+				font-size:12px;
+				color:#737373;
+				font-family:arial;
+			}
+			#top-div{
+				width:100%;
+				height:70px;
+			}
+			#top-div-right{
+				float:right;
+			}
+			li{
+				list-style:none;
+				margin:0;
+			}
+			#li1{
+				margin-top:15px;
+				height:30px;
+			}
+			ul{
+				margin:0;
+				padding:0;
+			}
+			.top-elements{
+				float:right;
+				margin-left:17px;
+				height:100%;
+			}
+			.top-elements-x{
+				margin-top:6px;
+			}
+			#top-photo{
+				height:30px;
+				width:30px;
+				position:relative;
+				z-index:10;
+				margin-right:25px;
+			}
+			#the-img{
+				position:absolute;
+				z-index:5;
+				width:100%;
+				height:100%;
+				border-radius:50%;
+				top:0;
+				left:0;
+			}
+			
+			#middle-div{
+				width:100%;
+			}
+			#inner-middle{
+				width:600px;
+				margin:0 auto;
+				margin-top:105px;
+			}
+			#middle-1{
+				width:240px;
+				margin:0 auto;
+			}
+			#middle-2{
+				position:relative;
+				width:86%;
+				margin:0 auto;
+				margin-top:20px;
+			}
+			input:focus{
+				outline:0;
+			}
+			#middle-input{
+				width:100%;
+				height:36px;
+				padding-left:10px;
+				border:1px #eee solid;
+				border-bottom:1px #ccc solid;
+				border-radius:2px;
+				box-shadow: 0px 0px 0px #ccc;
+				-webkit-transition: all 0.1s linear 0s;
+				transition: height all 0.1s linear 0s;
+			}
+			#middle-input:hover,#middle-input:focus{
+				box-shadow:0px 2px 5px #ccc;
+			}
+			#mic-img{
+				position:absolute;
+				z-index:1;
+				top:6px;
+				right:11px;
+			}
+			#middle-3{
+				width:100%;
+				margin-top:30px;
+			}
+			#middle-3-1{
+				width:50%;
+				float:left;
+			}
+			#middle-3-2{
+				width:50%;
+				float:right;
+			}
+			.the-m-btns{
+				height:30px;
+				background-color:#f1f1f1;
+				border:none;
+				padding:0 15px;
+				color:#777;
+				font-weight:600;
+				border:1px #eee solid;
+			}
+			.clear{
+				clear:both;
+			}
+			#middle-4{
+				width:100%;
+				margin-top:25px;
+			}
+			#bottom-div{
+				position:absolute;
+				bottom:0;
+				width:100%;
+				height:36px;
+				border-top:1px #ddd solid;
+				background-color:#eee;
+			}
+			#bottom-1{
+				float:left;
+			}
+			#bottom-2{
+				float:right;
+			}
+			.bottom-li{
+				margin-top:11px;
+				color:#666;
+			}
+			.bottom-l-text{
+				float:left;
+				margin-left:25px;
+			}
+			.bottom-r-text{
+				float:right;
+				margin-right:25px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="top-div">
+			<div id="top-div-right">
+				<li id="li1">
+					<ul class="top-elements">
+						<div id="top-photo">
+							<img id="the-img" src="photo.jpg"/>
+						</div>
+					</ul>
+					<ul class="top-elements">
+						<div class="top-elements-x">
+							<img src="bell.png"/>
+						</div>
+					</ul>
+					<ul class="top-elements">
+						<div class="top-elements-x">
+							<img src="grid.png"/>
+						</div>
+					</ul>
+					<ul class="top-elements">
+						<div class="top-elements-x">
+							Image
+						</div>
+					</ul>
+					<ul class="top-elements">
+						<div class="top-elements-x">
+							Gmail
+						</div>
+					</ul>
+				</li>
+			</div>
+		</div>
+		<div id="middle-div">
+			<div id="inner-middle">
+				<div id="middle-1">
+					<img style="width:100%;" src="google.png"/>
+				</div>
+				<div id="middle-2">
+					<img id="mic-img" src="mic.png"/>
+					<input id="middle-input"/>
+				</div>
+				<div id="middle-3">
+					<div id="middle-3-1">
+						<button id="search-btn" class="the-m-btns" style="float:right;margin-right:5px;">Google Search</button>
+					</div>
+					<div id="middle-3-2">
+						<button class="the-m-btns" style="float:left;margin-left:5px;">I'm Feeling Lucky</button>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div id="middle-4">
+					<img style="margin-left:45px;" src="lang.png"/>
+				</div>
+			</div>
+		</div>
+		<div id="bottom-div">
+			<div id="bottom-1">
+				<li class="bottom-li">
+					<ul class="bottom-l-text">Advertising</ul>
+					<ul class="bottom-l-text">Business</ul>
+					<ul class="bottom-l-text">About</ul>
+				</li>
+			</div>
+			<div id="bottom-2">
+				<li class="bottom-li">
+					<ul class="bottom-r-text">Use Google.com</ul>
+					<ul class="bottom-r-text">Settings</ul>
+					<ul class="bottom-r-text">Terms</ul>
+					<ul class="bottom-r-text">Privacy</ul>
+				</li>
+			</div>
+			<div class="clear"></div>
+		</div>
+	
+		<script>
+			function _(e){
+				return document.getElementById(e);
+			}
+			var abc=_("search-btn");
+			abc.onclick=function(){
+				alert(_('middle-input').value);
+			}
+		</script>
+	</body>
+</html>
